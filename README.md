@@ -61,6 +61,33 @@ This script initializes the [`PlacoTeleopController`](xrobotoolkit_teleop/simula
     scripts/simulation/teleop_inspire_hand_placo.py
     ```
 
+### Running the Franka FR3 v2 Simulation Demo
+
+To run the teleoperation demo with a single Franka Research 3 v2 arm (with Franka Hand gripper) in MuJoCo simulation:
+
+```bash
+python scripts/simulation/teleop_fr3v2_mujoco.py
+```
+This script initializes the [`MujocoTeleopController`](xrobotoolkit_teleop/simulation/mujoco_teleop_controller.py) with the FR3 v2 model. The IK target is the `fr3v2_hand_tcp` frame at the gripper tool-center-point; the right grip activates arm tracking and the right trigger drives the parallel-jaw gripper.
+
+The robot assets in [`assets/fr3v2/`](assets/fr3v2/) are derived from the [MuJoCo Menagerie `franka_fr3_v2`](https://github.com/google-deepmind/mujoco_menagerie/tree/main/franka_fr3_v2) (arm) and `franka_emika_panda` (gripper); the matching URDF is generated from [`franka_description`](https://github.com/frankaemika/franka_description) (`fr3v2` xacro).
+
+### Running the Marvin Dual-Arm Simulation Demo
+
+To run the teleoperation demo with the dual 7-DOF Marvin arms:
+
+- MuJoCo simulation
+    ```bash
+    python scripts/simulation/teleop_marvin_mujoco.py
+    ```
+
+- Placo visualization (IK only, no physics)
+    ```bash
+    python scripts/simulation/teleop_marvin_placo.py
+    ```
+
+Both scripts use the assets in [`assets/marvin/`](assets/marvin/). End-effector IK targets are `Link7_L` / `Link7_R`; left/right grip activates the corresponding arm.
+
 ### Running the Hardware Demo (Dual UR5 Arms and Dynamixel-based Head)
 
 To run the teleoperation demo with the physical dual UR arms and Dynamixel-based head:
